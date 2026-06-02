@@ -8,4 +8,6 @@ services:
     env_file:
       - .env
     volumes:
-      - ./data:/app/data
+      # ":Z" tells Docker to relabel the bind mount for SELinux (AlmaLinux/RHEL).
+      # Harmless on systems without SELinux.
+      - ./data:/app/data:Z
